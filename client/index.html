@@ -4,19 +4,68 @@
 <!-- <link rel='stylesheet' type='text/css' href='./css/styles.css'> -->
 <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"/></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="./angular-materialize-master/src/angular-materialize.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script src='../js/modules.js'></script>
 <script src='../js/model.js'></script>
 <script src='../js/controller.js'></script>
+<style>
+/*#logo-container span{
+  padding-left: 50px;
+  position:relative;
+  display: none;
+}*/
 
+body{
+  background-color: #775B23;
+}
+
+</style>
 
 </head>
-<body>
-	
-	
+<body ng-app='my_App'>
+<nav class="brown lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <div id='logo-container'>
+        <a href="#" class="brand-logo">Logo</a>
+        <span class='brand-logo center hide-on-med-and-down'>NG BIND PAGE Title</span>
+      </div>
+     <!--  <div id="test1" class="col s12">Test 1</div>
+      <div id="test2" class="col s12">Test 2</div>
+      <div id="test3" class="col s12">Test 3</div>
+      <div id="test4" class="col s12">Test 4</div> -->
+      
+
+    <div>
+      
+    </div>
+
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#/">Alpha</a></li>
+        <li><a href="#/userclass">Beta</a></li>
+      </ul>
+
+
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+
+
+  </nav>
+
+
+    
+    
+
+
+  <div ng-view=''>
+  </div>
 
 </body>
 
