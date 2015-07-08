@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+/*var mongoose = require('mongoose');
 var Useclass = mongoose.model('UseClass');
 
 module.exports = (function() {
@@ -26,7 +26,7 @@ module.exports = (function() {
         })
     },
 
-    /*remove: function(req, res) {
+    remove: function(req, res) {
         Useclass.remove({_id: req.params.id}, function(err, results) {
             if(err){
                 console.log(err);
@@ -34,6 +34,6 @@ module.exports = (function() {
                 res.redirect('/');
             }
         })
-    }*/
+    }
   }
-})();
+})();*/

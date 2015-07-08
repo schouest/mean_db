@@ -1,0 +1,73 @@
+<div ng-controller='usersController as Users'>
+
+<h4>Add Users</h4>
+<h1><span ng-bind='Users.error_txt'></span></h1>
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="name" type="text" class="validate" ng-model='Users.newUser.name'>
+          <label for="name">Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="uselevel" type="number" class="validate" ng-model='Users.newUser.class'>
+          <label for="uselevel">User Class</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <label for="dateob">Date of Birth</label>
+          <input input-date
+              type="text"
+              name="dob"
+              id="dateob"
+              ng-model="currentTime"
+              container="body"
+              format="dd/mm/yyyy"
+              months-full="{{ month }}"
+              months-short="{{ monthShort }}"
+              weekdays-full="{{ weekdaysFull }}"
+              weekdays-short="{{ weekdaysShort }}"
+              weekdays-letter="{{ weekdaysLetter }}"
+              today="today"
+              clear="clear"
+              close="close"
+              select-years="15"
+              on-start="onStart()"
+              on-render="onRender()"
+              on-open="onOpen()"
+              on-close="onClose()"
+              on-set="onSet()"
+              on-stop="onStop()" />
+        </div>
+      </div>
+      
+      <a class="waves-effect waves-light btn" ng-click='Users.addClass()'>Add Class</a>
+    </form>
+  </div>
+
+
+
+
+<h3>User-Classes</h3>
+<!-- <table>
+        <thead>
+          <tr>              
+              <th data-field="name">User-Class</th>
+              <th data-field="number">User-Level</th>
+              <th data-field="id">ID</th>
+              <th data-field="Description" class='hide-on-small-only'>Info</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="class in Users.useclasses | filter:filter_name | orderBy:'-level'">
+          	<td><span ng-bind='class.name'></span></td>
+          	<td><span ng-bind='class.level'></span></td>
+           	<td><span ng-bind='class._id'></span></td>
+          	<td class='hide-on-small-only'><span ng-bind='class.description'></span></td>
+          </tr>
+        </tbody>
+      </table> -->
+</div>

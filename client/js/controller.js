@@ -39,30 +39,110 @@ my_App.controller('useclassesController', function (useclassFactory){
 
 
 
-/*var currentTime = new Date();
-$scope.currentTime = currentTime;
-$scope.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-$scope.monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-$scope.weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-$scope.weekdaysLetter = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-$scope.today = 'Today';
-$scope.clear = 'Clear';
-$scope.close = 'Close';
-$scope.onStart = function () {
+
+my_App.controller('usersController', function (userFactory){
+        var that = this;
+          that.users = [];
+          userFactory.getUsers(function (data){
+              that.users = data;
+          })
+            
+      that.addUser = function (){
+      	console.log('new user in client controller: ');
+        /*for (i = 0; i < that.users.length; i++){  //form validation
+              
+              if(that.newUser.cname == undefined || that.newUser.cname == ""){
+                console.log('ERROR: NO NAME ENTERED FOR CUSTOMER');
+                that.error_txt = 'ERROR: Name left blank';
+                return false;
+              }
+              if(that.newUser.pname.name == undefined){
+                console.log('ERROR: NO PRODUCT SELECTED');
+                that.error_txt = 'ERROR: Product left blank';
+                return false;
+              }
+              if(typeof that.newUser.count != 'number' || that.newUser.count < 1){
+                console.log('ERROR: INVALID QUANTITY');
+                that.error_txt = 'ERROR: Invalid Quantity';
+                return false;
+              }
+              if(that.users[i].pname == that.newUser.pname.name
+                && that.users[i].cname == that.newUser.cname){
+                console.log("ERROR: USER ALREADY PLACED USER");
+                that.error_txt = 'ERROR: User already placed user for that item';
+                return false;
+              }
+        }*/
+
+        that.newUser.addDate = new Date();
+
+        //that.newUser.pname = that.newUser.pname.name;
+        /*userFactory.addUser(that.newUser, function (){
+              that.newUser = {};// clear the form values
+               userFactory.getUsers(function (data){
+                  that.users = data;
+              })
+        })*/
+        that.error_txt = '';//reset error text
+    }
+
+
+    var currentTime = new Date();
+that.currentTime = currentTime;
+that.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+that.monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+that.weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+that.weekdaysLetter = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+that.today = 'Today';
+that.clear = 'Clear';
+that.close = 'Close';
+that.onStart = function () {
     console.log('onStart');
 };
-$scope.onRender = function () {
+that.onRender = function () {
     console.log('onRender');
 };
-$scope.onOpen = function () {
+that.onOpen = function () {
     console.log('onOpen');
 };
-$scope.onClose = function () {
+that.onClose = function () {
     console.log('onClose');
 };
-$scope.onSet = function () {
+that.onSet = function () {
     console.log('onSet');
 };
-$scope.onStop = function () {
+that.onStop = function () {
+    console.log('onStop');
+};
+
+});
+
+
+
+/*var currentTime = new Date();
+that.currentTime = currentTime;
+that.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+that.monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+that.weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+that.weekdaysLetter = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+that.today = 'Today';
+that.clear = 'Clear';
+that.close = 'Close';
+that.onStart = function () {
+    console.log('onStart');
+};
+that.onRender = function () {
+    console.log('onRender');
+};
+that.onOpen = function () {
+    console.log('onOpen');
+};
+that.onClose = function () {
+    console.log('onClose');
+};
+that.onSet = function () {
+    console.log('onSet');
+};
+that.onStop = function () {
     console.log('onStop');
 };*/
