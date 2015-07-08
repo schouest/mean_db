@@ -1,10 +1,11 @@
-/*var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
-var UseclassSchema = new mongoose.Schema({
+var UserSchema = new mongoose.Schema({
   name: String,
   level: Number,
-  description: String,
-  addDate: Date
+  title: String,
+  dob: Date,
+  addDate: Date,
+  changeDate: Date
 });
-mongoose.model('UseClass', UseclassSchema);
-*/
+mongoose.model('User', UserSchema);

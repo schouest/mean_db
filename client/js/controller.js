@@ -48,7 +48,9 @@ my_App.controller('usersController', function (userFactory){
           })
             
       that.addUser = function (){
-      	console.log('new user in client controller: ');
+      	var newdob = new Date(that.newUser.dob);
+      		that.newUser.dob = newdob;
+      	//console.log('new user in client controller: ', that.newUser);
         /*for (i = 0; i < that.users.length; i++){  //form validation
               
               if(that.newUser.cname == undefined || that.newUser.cname == ""){
@@ -76,13 +78,12 @@ my_App.controller('usersController', function (userFactory){
 
         that.newUser.addDate = new Date();
 
-        //that.newUser.pname = that.newUser.pname.name;
-        /*userFactory.addUser(that.newUser, function (){
+        userFactory.addUser(that.newUser, function (){
               that.newUser = {};// clear the form values
                userFactory.getUsers(function (data){
                   that.users = data;
               })
-        })*/
+        })
         that.error_txt = '';//reset error text
     }
 
@@ -116,33 +117,3 @@ that.onStop = function () {
 };
 
 });
-
-
-
-/*var currentTime = new Date();
-that.currentTime = currentTime;
-that.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-that.monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-that.weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-that.weekdaysLetter = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-that.today = 'Today';
-that.clear = 'Clear';
-that.close = 'Close';
-that.onStart = function () {
-    console.log('onStart');
-};
-that.onRender = function () {
-    console.log('onRender');
-};
-that.onOpen = function () {
-    console.log('onOpen');
-};
-that.onClose = function () {
-    console.log('onClose');
-};
-that.onSet = function () {
-    console.log('onSet');
-};
-that.onStop = function () {
-    console.log('onStop');
-};*/
