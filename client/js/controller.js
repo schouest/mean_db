@@ -117,3 +117,68 @@ that.onStop = function () {
 };
 
 });
+
+
+my_App.controller('teamsController', function (teamFactory){
+        var that = this;
+          that.teams = [];
+          that.newteam = {};
+          teamFactory.getTeams(function (data){
+              that.teams = data;
+          })
+
+          var getNewTeam = function(){
+              teamFactory.getNewTeam(function (data){
+              that.newteam = data;
+              })
+          }         
+          getNewTeam();
+          console.log('pulled new team from model, showing in controller ',that.newteam);
+
+      that.addTeam = function (){
+        /*for (i = 0; i < that.teams.length; i++){  //check through list for dupe names
+              if(that.newteam.name == undefined){
+                console.log('ERROR: NO NAME ENTERED FOR NEW TEAM');
+                that.error_txt = 'ERROR: Name left blank';
+                return false;
+              }
+              if(that.teams[i].name == that.newteam.name){
+                console.log("ERROR: NAME MATCHED");
+                that.error_txt = 'ERROR: User already exists';
+                return false;
+              }
+        }*/
+        that.newteam.addDate = new Date();
+        teamFactory.addTeam(that.newteam,function (){
+            that.newteam = {};// clear the form values
+            teamFactory.getTeams(function (data){
+                that.teams = data;
+            })
+        })
+        that.error_txt = '';//reset error text
+    }
+
+      that.removeTeam = function (team){
+          teamFactory.delTeam(team, function(teams){
+            teamFactory.getTeams(function (data){
+                that.teams = data;
+            })
+          })
+      }
+
+      that.addUser = function (newmember){
+        teamFactory.addMember(newmember);
+        getNewTeam();
+ 
+      }
+
+      that.removeUser = function (param){
+        console.log(param);
+      }
+
+      that.resetNewTeam = function(){
+          teamFactory.resetTeam();
+          getNewTeam();
+      }
+
+});

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <link rel='stylesheet' type='text/css' href='./css/styles.css'> -->
 <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -23,6 +22,10 @@ body{
   background-color: #93482F;
 }
 
+#nteam{
+  min-height: 160px;
+}
+
 </style>
 
 </head>
@@ -31,25 +34,16 @@ body{
     <div class="nav-wrapper container">
       <div id='logo-container'>
         <a href="#" class="brand-logo">Logo</a>
-        <span class='brand-logo center hide-on-med-and-down'>NG BIND PAGE Title</span>
+        <span class='brand-logo center hide-on-med-and-down'>NG BIND PAGE TITLE</span>
       </div>
-     <!--  <div id="test1" class="col s12">Test 1</div>
-      <div id="test2" class="col s12">Test 2</div>
-      <div id="test3" class="col s12">Test 3</div>
-      <div id="test4" class="col s12">Test 4</div> -->
-      
 
-    <div>
-      
-    </div>
 
       <ul class="right hide-on-med-and-down">
-        <li><a href="#/">Alpha</a></li>
-        <li><a href="#/userclass">Beta</a></li>
-        <li><a href="#/users">Gamma</a></li>
-        <li><a href="#/delta">Delta</a></li>
+        <li><a href="#/projects">projects</a></li>
+        <li><a href="#/teams">teams</a></li>
+        <li><a href="#/users">users</a></li>
+        <li><a href="#/userclass">userclass</a></li>    
       </ul>
-
 
 
       <ul id="nav-mobile" class="side-nav">
@@ -57,16 +51,12 @@ body{
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
-
-
-  </nav>
-
-
-    
+  </nav> 
     
 
-
-  <div ng-view=''>
+<div class="divider"></div><label id='searchbar'>Search: <input type='text' ng-model='filter_name' placeholder='filter results'></label>
+  
+  <div ng-view='' class='container'>
   </div>
 
 </body>
