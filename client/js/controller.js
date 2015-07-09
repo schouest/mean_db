@@ -122,14 +122,16 @@ that.onStop = function () {
 my_App.controller('teamsController', function (teamFactory){
         var that = this;
           that.teams = [];
-          that.newteam = {};
+          that.newteam = [];
+          that.selected = [];
           teamFactory.getTeams(function (data){
               that.teams = data;
           })
 
           var getNewTeam = function(){
-              teamFactory.getNewTeam(function (data){
-              that.newteam = data;
+              teamFactory.getNewTeam(function (data1,data2){
+              that.newteam = data1;
+              that.selected = data2;
               })
           }         
           getNewTeam();
@@ -166,14 +168,22 @@ my_App.controller('teamsController', function (teamFactory){
           })
       }
 
-      that.addUser = function (newmember){
+      that.addUser = function (newmember,index){
+        console.log('new team was ',that.newteam);
+        console.log("that.newteam.indexOf(newmember) = ",that.newteam.indexOf(newmember));
+        if(that.newteam.indexOf(newmember)> -1){//maybe need the for loop back?
+          console.log('user ',newmember,' already found on team');
+              return false;
+        }
+        that.selected[index] = 'red';
         teamFactory.addMember(newmember);
         getNewTeam();
- 
       }
 
-      that.removeUser = function (param){
-        console.log(param);
+      that.removeUser = function (index){
+        that.selected[index] = ''
+        teamFactory.removeMember(index);
+        getNewTeam();
       }
 
       that.resetNewTeam = function(){

@@ -49,7 +49,7 @@ my_App.factory('teamFactory', function ($http){
     var teams = [];
     var factory = {};
     var newTeam = [];
-    console.log('ran team factory');
+    var selected = [];
     factory.getTeams = function (callback){
 	    /*$http.get('/getteams').success(function(output) {
 			    callback(output);
@@ -73,19 +73,21 @@ my_App.factory('teamFactory', function ($http){
 
 
 	factory.getNewTeam = function (callback){
-		callback(newTeam);
+		callback(newTeam,selected);
 	}
 
 	factory.addMember = function(newmember){
 		newTeam.push(newmember);
 	}
 
-	factory.removeMember = function(){
-
+	factory.removeMember = function(index){
+		console.log('going to remove member at index # ',index);
+		newTeam.splice(index,1);
 	}
 
 	factory.resetTeam = function(){
 		newTeam = [];
+		selected = [];
 	}
     return factory
 });
