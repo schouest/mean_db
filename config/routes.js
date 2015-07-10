@@ -1,6 +1,7 @@
 var useclasses = require('./../server/controllers/useclasses.js');
 var users = require('./../server/controllers/users.js');
 var teams = require('./../server/controllers/teams.js');
+var projects = require('./../server/controllers/projects.js');
 
   // require this in the server.js file and pass it app
   module.exports = (function(app) {
@@ -31,6 +32,15 @@ var teams = require('./../server/controllers/teams.js');
 
     app.post('/addteam', function(req, res) {
       teams.add(req, res);
+    });
+
+    app.get('/getprojects', function(req, res) {
+      projects.show(req, res);
+    });
+
+    app.post('/addproject', function(req, res) {
+      console.log('in routes ',req.body);
+      projects.add(req, res);
     });  
 
   });

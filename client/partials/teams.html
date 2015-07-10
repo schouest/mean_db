@@ -1,25 +1,22 @@
 <div ng-controller='teamsController as Teams'>
 <div ng-controller='usersController as Users'>
 
-
 <div class="row">
 <div class="col s4">
 	<ul class="collection">
 	<div ng-repeat="user in Users.users | filter:filter_name">
-	    <li class="collection-item avatar" ng-click="Teams.addUser(user,$index)" ng-class="Teams.selected[$index]">
+	    <li class="collection-item avatar" ng-click="Teams.addUser(user,user._id)" ng-class="Teams.selected[user._id]">
 	      <i class="material-icons circle" ng-bind="user.level"></i>
-	      <span class="title" ng-bind="user.title"></span>
-	      <p>{{user.name}} <br>
+	      <span class="title" ng-bind="user.name"></span>
+	      <p>{{user.title}} <br>
 	         {{user.dob}}}
 	      </p>
 	      <!-- <a href="#!" class="secondary-content"><i class="material-icons">INFO</i></a> -->
 	    </li>
 	</div>
 	 </ul>
-<!-- <input type="text" ng-model="selected[0]"> -->
 
 </div>
-
 
 <div class="input-field col s2">
           <input ng-model='Teams.newteam.tname' type='text' id='name'>
@@ -33,10 +30,10 @@
 	
 	<ul class="collection">
 	<div ng-repeat="member in Teams.newteam.roster">
-		<li class="collection-item avatar" ng-click="Teams.removeUser($index)">
+		<li class="collection-item avatar" ng-click="Teams.removeUser(member._id)">
 	      <i class="material-icons circle" ng-bind="member.level"></i>
-	      <span class="title" ng-bind="member.title"></span>
-	      <p>{{member.name}} <br>
+	      <span class="title" ng-bind="member.name"></span>
+	      <p>{{member.title}} <br>
 	         {{member.dob}}}
 	      </p>
 	      <!-- <a href="#!" class="secondary-content"><i class="material-icons">INFO</i></a> -->
@@ -73,8 +70,6 @@
         </tbody>
       </table>
 </div>
-	
-
 
 </div>
 </div>

@@ -39,11 +39,11 @@ my_App.factory('userFactory', function ($http){
 	  	})
     }
 
-	factory.delUser = function (deleteUser, callback){ //unimplemented
+	/*factory.delUser = function (deleteUser, callback){ //unimplemented
 			$http.get('/udelete/'+deleteUser._id).success(function(){
 			    callback();
 			 })
-	}    
+	}   */ 
     return factory
 });
 
@@ -60,13 +60,12 @@ my_App.factory('teamFactory', function ($http){
     }
 
 
-    factory.addTeam = function (nTeam, callback){ // this isn't working
+    factory.addTeam = function (nTeam, callback){
     	var tempObj = new Object();
     	tempObj.tname = nTeam.tname;
     	tempObj.roster = nTeam.roster;
     	tempObj.leader = nTeam.leader;
     	tempObj.addDate = nTeam.addDate;
-
     	$http.post('/addteam', tempObj).success(function(){
 			    callback();
 	  	})
@@ -81,8 +80,15 @@ my_App.factory('teamFactory', function ($http){
 	}
 
 	factory.removeMember = function(index){
-		console.log('going to remove member at index # ',index);
-		newTeam.roster.splice(index,1);
+		var newIndex;
+			for(var i=0; i<newTeam.roster.length;i++){
+				if(index == newTeam.roster[i]._id){
+					newIndex = i; 
+					break;
+				}
+			}
+		//console.log('going to remove member at index # ',index);
+		newTeam.roster.splice(newIndex,1);
 	}
 
 	factory.resetTeam = function(){
@@ -90,6 +96,32 @@ my_App.factory('teamFactory', function ($http){
 		newTeam.roster = [];
 		selected = [];
 	}
+    return factory
+});
+
+my_App.factory('projectFactory', function ($http){
+    var projects = [];
+    var factory = {};
+    factory.getProjects = function (callback){
+	    /*$http.get('/getprojects').success(function(output) {
+			    callback(output);
+	  })*/
+			callback();//temp
+    }
+
+    factory.addProject = function (newProject, callback){
+    	console.log("newProject in client model ",newProject);
+    	/*$http.post('/addproject', newProject).success(function() {
+			    callback();
+	  	})*/
+callback(); //temp
+    }
+
+	/*factory.delProject = function (deleteProject, callback){ //unimplemented
+			$http.get('/udelete/'+deleteProject._id).success(function(){
+			    callback();
+			 })
+	}   */ 
     return factory
 });
 

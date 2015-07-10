@@ -88,6 +88,7 @@ my_App.controller('usersController', function (userFactory){
     }
 
 
+//Angular materialize datepicker
     var currentTime = new Date();
 that.currentTime = currentTime;
 that.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -170,18 +171,25 @@ my_App.controller('teamsController', function (teamFactory){
       }
 
       that.addUser = function (newmember,index){
-        //console.log('new team was ',that.newteam);
-       // console.log("that.newteam.roster.indexOf(newmember) = ",that.newteam.roster.indexOf(newmember));
-       /* if(that.newteam.roster.indexOf(newmember)> -1){//maybe need the for loop back?
+       // console.log('new team roster was ',that.newteam.roster);
+        /*if(that.newteam.roster.indexOf(newmember)> -1){//maybe need the for loop back?
           console.log('user ',newmember,' already found on team');
               return false;
         }*/
+        for(var i=0; i<that.newteam.roster.length; i++){
+            if(that.newteam.roster[i]._id == newmember._id){
+                console.log("User ",newmember.name," already on new team");
+                return false;
+            }
+        }
+        //console.log(newmember);
         that.selected[index] = 'red';
         teamFactory.addMember(newmember);
         getNewTeam();
       }
 
       that.removeUser = function (index){
+        console.log(index);
         that.selected[index] = ''
         teamFactory.removeMember(index);
         getNewTeam();
@@ -191,5 +199,31 @@ my_App.controller('teamsController', function (teamFactory){
           teamFactory.resetTeam();
           getNewTeam();
       }
+
+});
+
+
+my_App.controller('projectsController', function (projectFactory){
+        var that = this;
+          that.projects = [];
+          projectFactory.getProjects(function (data){
+              that.projects = data;
+          })
+            
+      that.addProject = function (){
+        //var newdob = new Date(that.newProject.dob);
+          //that.newProject.dob = newdob;
+        console.log('new project in client controller: ', that.newProject);
+
+        that.newProject.addDate = new Date();
+
+        projectFactory.addProject(that.newProject, function (){
+              that.newProject = {};
+               projectFactory.getProjects(function (data){
+                  that.projects = data;
+              })
+        })
+        that.error_txt = '';
+    }
 
 });
