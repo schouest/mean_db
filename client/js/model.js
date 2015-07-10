@@ -61,12 +61,12 @@ my_App.factory('teamFactory', function ($http){
 
 
     factory.addTeam = function (nTeam, callback){
-    	var tempObj = new Object();
-    	tempObj.tname = nTeam.tname;
-    	tempObj.roster = nTeam.roster;
-    	tempObj.leader = nTeam.leader;
-    	tempObj.addDate = nTeam.addDate;
-    	$http.post('/addteam', tempObj).success(function(){
+    	var newTeamObj = new Object();
+    	newTeamObj.tname = nTeam.tname;
+    	newTeamObj.roster = nTeam.roster;
+    	newTeamObj.leader = nTeam.leader;
+    	newTeamObj.addDate = nTeam.addDate;
+    	$http.post('/addteam', newTeamObj).success(function(){
 			    callback();
 	  	})
     }
@@ -103,18 +103,16 @@ my_App.factory('projectFactory', function ($http){
     var projects = [];
     var factory = {};
     factory.getProjects = function (callback){
-	    /*$http.get('/getprojects').success(function(output) {
+	    $http.get('/getprojects').success(function(output) {
 			    callback(output);
-	  })*/
-			callback();//temp
+	  })
     }
 
     factory.addProject = function (newProject, callback){
     	console.log("newProject in client model ",newProject);
-    	/*$http.post('/addproject', newProject).success(function() {
+    	$http.post('/addproject', newProject).success(function() {
 			    callback();
-	  	})*/
-callback(); //temp
+	  	})
     }
 
 	/*factory.delProject = function (deleteProject, callback){ //unimplemented

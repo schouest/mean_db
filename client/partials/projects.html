@@ -1,1 +1,49 @@
-<h1>Projects</h1>
+<div ng-controller='projectsController as Projects'>
+	<h4>Add Projects</h4>
+<h1><span ng-bind='Projects.error_txt'></span></h1>	
+<div ng-controller='teamsController as Teams'>
+
+<div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="name" type="text" ng-model='Projects.newProject.name'>
+          <label for="name">Name</label>
+        </div>
+        <div class="input-field col s6">
+          <select class="browser-default" ng-model='Projects.newProject.team'>
+              <option value="">Choose Team</option>
+              <option ng-repeat="team in Teams.teams" ng-value="team._id" ng-bind="team.tname + ', Leader: ' + team.leader"></option>
+          </select> 
+        </div>
+      </div>
+      
+      <a class="waves-effect waves-light deep-orange accent-4 btn" ng-click='Projects.addProject()'>Add Project</a>
+    </form>
+  </div>
+
+<h4>Projects</h4>
+<table>
+        <thead>
+          <tr>              
+              <th data-field="name">Name</th>
+              <th data-field="number">Team</th>
+              <th data-field="name">Leader</th>
+              <th data-field="changedate" class='hide-on-small-only'>Updated/Added</th>
+              <th data-field="id" class='hide-on-med-and-down'>ID</th>      
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="project in Projects.projects | filter:filter_name">
+            <td><span ng-bind='project.name'></span></td>
+          	<td><span ng-bind="project.team"></span></td>
+          	<td><span ng-bind='project.leader'></span></td>
+            <td class='hide-on-small-only'><span ng-bind="project.changeDate+'/'+project.addDate"></span></td>
+            <td class='hide-on-med-and-down'><span ng-bind='project._id'></span></td>
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+</div>

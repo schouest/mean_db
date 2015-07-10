@@ -54,8 +54,7 @@
               <th data-field="number">Average Level</th>
               <th data-field="birthday">Leader</th>
               <th data-field="changedate" class='hide-on-small-only'>Updated/Added</th>
-              <th data-field="id" class='hide-on-med-and-down'>ID</th>
-              
+              <th data-field="id" class='hide-on-med-and-down'>ID</th>    
           </tr>
         </thead>
 
@@ -63,7 +62,7 @@
           <tr ng-repeat="team in Teams.teams | filter:filter_name">
             <td><span ng-bind='team.tname'></span></td>
           	<td><span ng-bind="team.title + ': ' + team.level"></span></td>
-          	<td><span ng-bind=''></span></td>
+          	<td><span ng-bind='team.leader'></span></td>
             <td class='hide-on-small-only'><span ng-bind="team.changeDate+'/'+team.addDate"></span></td>
             <td class='hide-on-med-and-down'><span ng-bind='team._id'></span></td>
           </tr>

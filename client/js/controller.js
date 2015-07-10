@@ -211,10 +211,7 @@ my_App.controller('projectsController', function (projectFactory){
           })
             
       that.addProject = function (){
-        //var newdob = new Date(that.newProject.dob);
-          //that.newProject.dob = newdob;
         console.log('new project in client controller: ', that.newProject);
-
         that.newProject.addDate = new Date();
 
         projectFactory.addProject(that.newProject, function (){
