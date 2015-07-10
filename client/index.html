@@ -19,12 +19,22 @@
 }*/
 
 body{
+  background-image: url("/images/1seamless_wood_texture_2.jpg");
   background-color: #93482F;
 }
 
 #nteam{
   min-height: 160px;
 }
+
+#searchbar,#searchbarlabel{
+  padding-left: 20px;
+}
+
+#teambuildheader{
+
+}
+
 
 </style>
 
@@ -33,8 +43,8 @@ body{
 <nav class="brown lighten-1" role="navigation">
     <div class="nav-wrapper container">
       <div id='logo-container'>
-        <a href="#" class="brand-logo">Logo</a>
-        <span class='brand-logo center hide-on-med-and-down'>NG BIND PAGE TITLE</span>
+        <a href="#" class="brand-logo hide-on-large-only">Team Builder</a>
+        <span class='brand-logo left hide-on-med-and-down'>Team Builder</span>
       </div>
 
 
@@ -54,7 +64,7 @@ body{
   </nav> 
     
 
-<div class="divider"></div><label id='searchbar'>Search: <input type='text' ng-model='filter_name' placeholder='filter results'></label>
+<div class="divider"></div><label id='searchbarlabel'>Search: <input  id='searchbar' type='text' ng-model='filter_name' placeholder='filter results'></label>
   
   <div ng-view='' class='container'>
   </div>

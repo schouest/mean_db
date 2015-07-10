@@ -38,8 +38,6 @@ my_App.controller('useclassesController', function (useclassFactory){
       });
 
 
-
-
 my_App.controller('usersController', function (userFactory){
         var that = this;
           that.users = [];
@@ -51,30 +49,30 @@ my_App.controller('usersController', function (userFactory){
       	var newdob = new Date(that.newUser.dob);
       		that.newUser.dob = newdob;
       	//console.log('new user in client controller: ', that.newUser);
-        /*for (i = 0; i < that.users.length; i++){  //form validation
+        for (i = 0; i < that.users.length; i++){  //form validation
               
-              if(that.newUser.cname == undefined || that.newUser.cname == ""){
+              if(that.newUser.name == undefined || that.newUser.name == ""){
                 console.log('ERROR: NO NAME ENTERED FOR CUSTOMER');
                 that.error_txt = 'ERROR: Name left blank';
                 return false;
               }
-              if(that.newUser.pname.name == undefined){
-                console.log('ERROR: NO PRODUCT SELECTED');
-                that.error_txt = 'ERROR: Product left blank';
+              if(that.newUser.dob == undefined){
+                console.log('ERROR: NO BDAY SELECTED');
+                that.error_txt = 'ERROR: Date of Birth left blank';
                 return false;
               }
-              if(typeof that.newUser.count != 'number' || that.newUser.count < 1){
-                console.log('ERROR: INVALID QUANTITY');
-                that.error_txt = 'ERROR: Invalid Quantity';
+              
+              /*if(that.newUser.level == undefined){
+                console.log('ERROR: USER CLASS INVALID ',that.newUser);
+                that.error_txt = 'ERROR: Invalid User Class Selected';
+                return false;
+              }*/
+              if(that.users[i].name == that.newUser.name){
+                console.log("ERROR: USER ALREADY EXISTS");
+                that.error_txt = 'ERROR: User already exists';
                 return false;
               }
-              if(that.users[i].pname == that.newUser.pname.name
-                && that.users[i].cname == that.newUser.cname){
-                console.log("ERROR: USER ALREADY PLACED USER");
-                that.error_txt = 'ERROR: User already placed user for that item';
-                return false;
-              }
-        }*/
+        }
 
         that.newUser.addDate = new Date();
 

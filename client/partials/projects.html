@@ -11,7 +11,7 @@
           <label for="name">Name</label>
         </div>
         <div class="input-field col s6">
-          <select class="browser-default" ng-model='Projects.newProject.team'>
+          <select class="browser-default grey lighten-1" ng-model='Projects.newProject.team'>
               <option value="">Choose Team</option>
               <option ng-repeat="team in Teams.teams" ng-value="team._id" ng-bind="team.tname + ', Leader: ' + team.leader"></option>
           </select> 

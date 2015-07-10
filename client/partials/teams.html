@@ -2,7 +2,18 @@
 <div ng-controller='usersController as Users'>
 
 <div class="row">
-<div class="col s4">
+
+<div class="input-field col s3">
+          <input ng-model='Teams.newteam.tname' type='text' id='name'>
+          <label for="name">Team Name</label>
+          <h4 id="teambuildheader">Build Team</h4>
+          <select class="browser-default grey lighten-1" ng-model='Teams.newteam.leader'>
+              <option value="">Choose Project Lead</option>
+              <option ng-repeat="member in Teams.newteam.roster" ng-value="member._id" ng-bind="member.level + ': ' + member.name"></option>
+          </select>
+    </div>
+
+<div class="col s4 grey darken-2">
 	<ul class="collection">
 	<div ng-repeat="user in Users.users | filter:filter_name">
 	    <li class="collection-item avatar" ng-click="Teams.addUser(user,user._id)" ng-class="Teams.selected[user._id]">
@@ -18,19 +29,12 @@
 
 </div>
 
-<div class="input-field col s2">
-          <input ng-model='Teams.newteam.tname' type='text' id='name'>
-          <label for="name">Name</label>
-          <select class="browser-default" ng-model='Teams.newteam.leader'>
-              <option value="">Choose Project Lead</option>
-              <option ng-repeat="member in Teams.newteam.roster" ng-value="member._id" ng-bind="member.level + ': ' + member.name"></option>
-          </select>
-    </div>
-<div id="nteam" class="col s6 white">
+
+<div id="nteam" class="col s5 brown red lighten-3">
 	
 	<ul class="collection">
 	<div ng-repeat="member in Teams.newteam.roster">
-		<li class="collection-item avatar" ng-click="Teams.removeUser(member._id)">
+		<li class="collection-item avatar grey lighten-3" ng-click="Teams.removeUser(member._id)">
 	      <i class="material-icons circle" ng-bind="member.level"></i>
 	      <span class="title" ng-bind="member.name"></span>
 	      <p>{{member.title}} <br>
@@ -41,6 +45,8 @@
 	</div>
 	</ul>
 </div>
+
+
  <a class="waves-effect waves-light deep-orange accent-4 btn" ng-click="Teams.addTeam()">Add</a>
  <a class="waves-effect waves-light deep-orange accent-4 btn" ng-click="Teams.resetNewTeam()">Reset</a>
 </div>
