@@ -3,9 +3,9 @@ var express = require('express');
 var path = require('path');
 var app = express();
 var bodyParser = require("body-parser");
-app.use(bodyParser.json());
+app.use(bodyParser.json({ strict: 'false' }));
 
-require('./config/mongoose.js'); // this must be above require(routes)
+require('./config/mongoose.js'); // must be above require(routes)
 require('./config/routes.js')(app);
 
 // set up a static file server that points to the "client" directory

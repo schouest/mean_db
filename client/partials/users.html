@@ -16,8 +16,7 @@
           <select class="browser-default" ng-model='Users.newUser.type' id="uselevel">
               <option value="">Choose User Class</option>
               <option ng-repeat="class in Ucl.useclasses" ng-value="class._id" ng-bind="class.level + ': ' + class.name"></option>
-<!--           <input id="uselevel" type="number" class="validate" ng-model='Users.newUser.class'>
- -->      </select> 
+          </select> 
         </div>
       </div>
 
@@ -62,8 +61,7 @@
               <th data-field="number">Title/Level</th>
               <th data-field="birthday">Birthday</th>
               <th data-field="changedate" class='hide-on-small-only'>Updated/Added</th>
-              <th data-field="id" class='hide-on-med-and-down'>ID</th>
-              
+              <th data-field="id" class='hide-on-med-and-down'>ID</th>      
           </tr>
         </thead>
 

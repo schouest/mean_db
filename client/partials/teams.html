@@ -2,8 +2,6 @@
 <div ng-controller='usersController as Users'>
 
 
-
-
 <div class="row">
 <div class="col s4">
 	<ul class="collection">
@@ -23,10 +21,18 @@
 </div>
 
 
-
-<div id="nteam" class="col s8 white">
+<div class="input-field col s2">
+          <input ng-model='Teams.newteam.tname' type='text' id='name'>
+          <label for="name">Name</label>
+          <select class="browser-default" ng-model='Teams.newteam.leader'>
+              <option value="">Choose Project Lead</option>
+              <option ng-repeat="member in Teams.newteam.roster" ng-value="member._id" ng-bind="member.level + ': ' + member.name"></option>
+          </select>
+    </div>
+<div id="nteam" class="col s6 white">
+	
 	<ul class="collection">
-	<div ng-repeat="member in Teams.newteam">
+	<div ng-repeat="member in Teams.newteam.roster">
 		<li class="collection-item avatar" ng-click="Teams.removeUser($index)">
 	      <i class="material-icons circle" ng-bind="member.level"></i>
 	      <span class="title" ng-bind="member.title"></span>
@@ -38,10 +44,36 @@
 	</div>
 	</ul>
 </div>
- <a class="waves-effect waves-light deep-orange accent-4 btn" ng-click="">Add</a>
+ <a class="waves-effect waves-light deep-orange accent-4 btn" ng-click="Teams.addTeam()">Add</a>
  <a class="waves-effect waves-light deep-orange accent-4 btn" ng-click="Teams.resetNewTeam()">Reset</a>
 </div>
 
+<h3>Teams</h3>
+<div class="row" id='results'>
+	<table>
+        <thead>
+          <tr>              
+              <th data-field="name">Name</th>
+              <th data-field="number">Average Level</th>
+              <th data-field="birthday">Leader</th>
+              <th data-field="changedate" class='hide-on-small-only'>Updated/Added</th>
+              <th data-field="id" class='hide-on-med-and-down'>ID</th>
+              
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="team in Teams.teams | filter:filter_name">
+            <td><span ng-bind='team.tname'></span></td>
+          	<td><span ng-bind="team.title + ': ' + team.level"></span></td>
+          	<td><span ng-bind=''></span></td>
+            <td class='hide-on-small-only'><span ng-bind="team.changeDate+'/'+team.addDate"></span></td>
+            <td class='hide-on-med-and-down'><span ng-bind='team._id'></span></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+	
 
 
 </div>

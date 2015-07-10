@@ -122,7 +122,7 @@ that.onStop = function () {
 my_App.controller('teamsController', function (teamFactory){
         var that = this;
           that.teams = [];
-          that.newteam = [];
+          that.newteam = {};
           that.selected = [];
           teamFactory.getTeams(function (data){
               that.teams = data;
@@ -135,7 +135,7 @@ my_App.controller('teamsController', function (teamFactory){
               })
           }         
           getNewTeam();
-          console.log('pulled new team from model, showing in controller ',that.newteam);
+          //console.log('pulled new team from model, showing in controller ',that.newteam);
 
       that.addTeam = function (){
         /*for (i = 0; i < that.teams.length; i++){  //check through list for dupe names
@@ -152,7 +152,8 @@ my_App.controller('teamsController', function (teamFactory){
         }*/
         that.newteam.addDate = new Date();
         teamFactory.addTeam(that.newteam,function (){
-            that.newteam = {};// clear the form values
+            teamFactory.resetTeam();
+            getNewTeam();
             teamFactory.getTeams(function (data){
                 that.teams = data;
             })
@@ -169,12 +170,12 @@ my_App.controller('teamsController', function (teamFactory){
       }
 
       that.addUser = function (newmember,index){
-        console.log('new team was ',that.newteam);
-        console.log("that.newteam.indexOf(newmember) = ",that.newteam.indexOf(newmember));
-        if(that.newteam.indexOf(newmember)> -1){//maybe need the for loop back?
+        //console.log('new team was ',that.newteam);
+       // console.log("that.newteam.roster.indexOf(newmember) = ",that.newteam.roster.indexOf(newmember));
+       /* if(that.newteam.roster.indexOf(newmember)> -1){//maybe need the for loop back?
           console.log('user ',newmember,' already found on team');
               return false;
-        }
+        }*/
         that.selected[index] = 'red';
         teamFactory.addMember(newmember);
         getNewTeam();

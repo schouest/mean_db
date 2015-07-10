@@ -34,9 +34,7 @@ module.exports = (function() {
                         }
                     })
             }
-        })
-
-        
+        })        
     },
 
     remove: function(req, res) {

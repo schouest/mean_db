@@ -8,6 +8,8 @@ my_App.factory('useclassFactory', function ($http){
     }
 
     factory.addUseclass = function (newUseclass, callback){
+    	    	console.log('New UserClass ',newUseclass);
+
     	$http.post('/addclass', newUseclass).success(function() {
 			    callback();
 	  	})
@@ -49,44 +51,43 @@ my_App.factory('teamFactory', function ($http){
     var teams = [];
     var factory = {};
     var newTeam = [];
+    newTeam.roster = [];
     var selected = [];
     factory.getTeams = function (callback){
-	    /*$http.get('/getteams').success(function(output) {
+	    $http.get('/getteams').success(function(output) {
 			    callback(output);
-	  })*/
-			callback();//temp
+	  })
     }
 
-    factory.addTeam = function (newTeam, callback){
-    	console.log("newTeam in client model ",newTeam);
-    	/*$http.post('/addteam', newTeam).success(function() {
+
+    factory.addTeam = function (nTeam, callback){ // this isn't working
+    	var tempObj = new Object();
+    	tempObj.tname = nTeam.tname;
+    	tempObj.roster = nTeam.roster;
+    	tempObj.leader = nTeam.leader;
+    	tempObj.addDate = nTeam.addDate;
+
+    	$http.post('/addteam', tempObj).success(function(){
 			    callback();
-	  	})*/
-			callback();//temp
+	  	})
     }
-
-	factory.delTeam = function (deleteTeam, callback){ //unimplemented
-			$http.get('/tdelete/'+deleteTeam._id).success(function(){
-			    callback();
-			 })
-	}
-
 
 	factory.getNewTeam = function (callback){
 		callback(newTeam,selected);
 	}
 
 	factory.addMember = function(newmember){
-		newTeam.push(newmember);
+		newTeam.roster.push(newmember);
 	}
 
 	factory.removeMember = function(index){
 		console.log('going to remove member at index # ',index);
-		newTeam.splice(index,1);
+		newTeam.roster.splice(index,1);
 	}
 
 	factory.resetTeam = function(){
 		newTeam = [];
+		newTeam.roster = [];
 		selected = [];
 	}
     return factory
