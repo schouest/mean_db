@@ -54,13 +54,13 @@
 </div>
 
 <h3>Users</h3>
-<table>
+<table class='hoverable'>
         <thead>
           <tr>              
               <th data-field="name">Name</th>
               <th data-field="number">Title/Level</th>
               <th data-field="birthday">Birthday</th>
-              <th data-field="changedate" class='hide-on-small-only'>Updated/Added</th>
+              <th data-field="changedate" class='hide-on-small-only'>Added</th>
               <th data-field="id" class='hide-on-med-and-down'>ID</th>      
           </tr>
         </thead>
@@ -69,8 +69,8 @@
           <tr ng-repeat="user in Users.users | filter:filter_name">
             <td><span ng-bind='user.name'></span></td>
           	<td><span ng-bind="user.title + ': ' + user.level"></span></td>
-          	<td><span ng-bind='user.dob'></span></td>
-            <td class='hide-on-small-only'><span ng-bind="user.changeDate+'/'+user.addDate"></span></td>
+          	<td><span ng-bind='user.dob |date'></span></td>
+            <td class='hide-on-small-only'><span ng-bind="user.addDate |date"></span></td>
             <td class='hide-on-med-and-down'><span ng-bind='user._id'></span></td>
           </tr>
         </tbody>

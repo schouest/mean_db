@@ -13,20 +13,21 @@
           </select>
     </div>
 
-<div class="col s4 grey darken-2">
-	<ul class="collection">
+<div class="col s4 grey darken-1">
+	<ul class="collection" id="availusers">
 	<div ng-repeat="user in Users.users | filter:filter_name">
 	    <li class="collection-item avatar" ng-click="Teams.addUser(user,user._id)" ng-class="Teams.selected[user._id]">
 	      <i class="material-icons circle" ng-bind="user.level"></i>
 	      <span class="title" ng-bind="user.name"></span>
 	      <p>{{user.title}} <br>
-	         {{user.dob}}}
+	         {{user.dob |date}}
 	      </p>
 	      <!-- <a href="#!" class="secondary-content"><i class="material-icons">INFO</i></a> -->
 	    </li>
 	</div>
 	 </ul>
-
+<a class="waves-effect waves-light deep-orange accent-4 btn" ng-click="Teams.addTeam()">Add</a>
+ <a class="waves-effect waves-light deep-orange accent-4 btn" ng-click="Teams.resetNewTeam()">Reset</a>
 </div>
 
 
@@ -38,28 +39,28 @@
 	      <i class="material-icons circle" ng-bind="member.level"></i>
 	      <span class="title" ng-bind="member.name"></span>
 	      <p>{{member.title}} <br>
-	         {{member.dob}}}
+	         {{member.dob |date}}
 	      </p>
 	      <!-- <a href="#!" class="secondary-content"><i class="material-icons">INFO</i></a> -->
 	    </li>
 	</div>
 	</ul>
+
 </div>
 
 
- <a class="waves-effect waves-light deep-orange accent-4 btn" ng-click="Teams.addTeam()">Add</a>
- <a class="waves-effect waves-light deep-orange accent-4 btn" ng-click="Teams.resetNewTeam()">Reset</a>
+ 
 </div>
 
 <h3>Teams</h3>
 <div class="row" id='results'>
-	<table>
+	<table class='hoverable'>
         <thead>
           <tr>              
               <th data-field="name">Name</th>
-              <th data-field="number">Average Level</th>
-              <th data-field="birthday">Leader</th>
-              <th data-field="changedate" class='hide-on-small-only'>Updated/Added</th>
+              <!-- <th data-field="number">Average Level</th> -->
+              <th data-field="name">Leader</th>
+              <th data-field="changedate" class='hide-on-small-only'>Updated</th>
               <th data-field="id" class='hide-on-med-and-down'>ID</th>    
           </tr>
         </thead>
@@ -67,9 +68,9 @@
         <tbody>
           <tr ng-repeat="team in Teams.teams | filter:filter_name">
             <td><span ng-bind='team.tname'></span></td>
-          	<td><span ng-bind="team.title + ': ' + team.level"></span></td>
-          	<td><span ng-bind='team.leader'></span></td>
-            <td class='hide-on-small-only'><span ng-bind="team.changeDate+'/'+team.addDate"></span></td>
+          	<!-- <td><span ng-bind="team.title + ': ' + team.level"></span></td> -->
+          	<td><span ng-bind='team.leader_name'></span></td>
+            <td class='hide-on-small-only'><span ng-bind="team.changeDate |date"></span></td>
             <td class='hide-on-med-and-down'><span ng-bind='team._id'></span></td>
           </tr>
         </tbody>

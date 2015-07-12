@@ -61,7 +61,7 @@ my_App.controller('usersController', function (userFactory){
                 that.error_txt = 'ERROR: Date of Birth left blank';
                 return false;
               }
-              
+
               /*if(that.newUser.level == undefined){
                 console.log('ERROR: USER CLASS INVALID ',that.newUser);
                 that.error_txt = 'ERROR: Invalid User Class Selected';
@@ -125,12 +125,22 @@ my_App.controller('teamsController', function (teamFactory){
           that.selected = [];
           teamFactory.getTeams(function (data){
               that.teams = data;
+              for(var j = 0; j<data.length; j++){
+                  for (var i = 0; i<that.teams[j].roster.length; i++){
+                    if(that.teams[j].roster[i]._id == that.teams[j].leader){
+                        that.teams[j].leader_name = that.teams[j].roster[i].name;
+                        break;
+                    }
+                }
+              }
+              
           })
 
           var getNewTeam = function(){
               teamFactory.getNewTeam(function (data1,data2){
               that.newteam = data1;
               that.selected = data2;
+
               })
           }         
           getNewTeam();
@@ -155,6 +165,14 @@ my_App.controller('teamsController', function (teamFactory){
             getNewTeam();
             teamFactory.getTeams(function (data){
                 that.teams = data;
+                for(var j = 0; j<data.length; j++){
+                  for (var i = 0; i<that.teams[j].roster.length; i++){
+                    if(that.teams[j].roster[i]._id == that.teams[j].leader){
+                        that.teams[j].leader_name = that.teams[j].roster[i].name;
+                        break;
+                    }
+                }
+              }
             })
         })
         that.error_txt = '';//reset error text

@@ -1,4 +1,4 @@
-var my_App = angular.module('my_App', ['ngRoute','ui.materialize']);
+var my_App = angular.module('my_App', ['ngRoute','ui.materialize','angularMoment']);
 
 my_App.config(function ($routeProvider){
 	$routeProvider

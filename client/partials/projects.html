@@ -13,7 +13,7 @@
         <div class="input-field col s6">
           <select class="browser-default grey lighten-1" ng-model='Projects.newProject.team'>
               <option value="">Choose Team</option>
-              <option ng-repeat="team in Teams.teams" ng-value="team._id" ng-bind="team.tname + ', Leader: ' + team.leader"></option>
+              <option ng-repeat="team in Teams.teams" ng-value="team.tname" ng-bind="team.tname + ', Leader: ' + team.leader_name"></option>
           </select> 
         </div>
       </div>
@@ -28,8 +28,8 @@
           <tr>              
               <th data-field="name">Name</th>
               <th data-field="number">Team</th>
-              <th data-field="name">Leader</th>
-              <th data-field="changedate" class='hide-on-small-only'>Updated/Added</th>
+              <!-- <th data-field="name">Leader</th> -->
+              <th data-field="changedate" class='hide-on-small-only'>Updated</th>
               <th data-field="id" class='hide-on-med-and-down'>ID</th>      
           </tr>
         </thead>
@@ -38,8 +38,8 @@
           <tr ng-repeat="project in Projects.projects | filter:filter_name">
             <td><span ng-bind='project.name'></span></td>
           	<td><span ng-bind="project.team"></span></td>
-          	<td><span ng-bind='project.leader'></span></td>
-            <td class='hide-on-small-only'><span ng-bind="project.changeDate+'/'+project.addDate"></span></td>
+          	<!-- <td><span ng-bind='project.leader'></span></td> -->
+            <td class='hide-on-small-only'><span ng-bind="project.changeDate |date"></span></td>
             <td class='hide-on-med-and-down'><span ng-bind='project._id'></span></td>
           </tr>
         </tbody>

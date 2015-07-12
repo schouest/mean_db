@@ -4,7 +4,8 @@ var path = require('path');
 var app = express();
 var bodyParser = require("body-parser");
 app.use(bodyParser.json({ strict: 'false' }));
-
+var moment = require('moment');
+moment().format();
 require('./config/mongoose.js'); // must be above require(routes)
 require('./config/routes.js')(app);
 
